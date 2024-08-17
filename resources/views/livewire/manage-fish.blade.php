@@ -4,8 +4,6 @@
             <div class="p-6 bg-white border-b border-gray-200">
                 <div class="space-y-4">
                     <div class="bg-white shadow-md rounded-lg p-4">
-                        <h1 class="text-2xl font-semibold mb-4">Add New Fish</h1>
-
                         <form wire:submit.prevent="store">
                             <div class="flex items-center mb-4">
                                 <label for="name" class="mr-2">Name:</label>
