@@ -9,13 +9,7 @@ use App\Models\FishType;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
-use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\FishTypeResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\FishTypeResource\RelationManagers;
 
 class FishTypeResource extends Resource
 {

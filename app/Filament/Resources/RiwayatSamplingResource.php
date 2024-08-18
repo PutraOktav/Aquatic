@@ -27,8 +27,16 @@ class RiwayatSamplingResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->label('Id Riwayat'),
-                Tables\Columns\TextColumn::make('fish_type_id')->label('Kode Ikan'),
+                Tables\Columns\TextColumn::make('name')->label('Nama Ikan'),
+                Tables\Columns\TextColumn::make('area')
+                   ->label('Luas Kolam')
+                   ->formatStateUsing(fn (?string $state): string => $state ? "{$state} m²" : 'N/A'),
+                Tables\Columns\TextColumn::make('ukuranIkanSampling')
+                    ->label('Ukuran Ikan')
+                    ->formatStateUsing(fn (string $state): string => "{$state} kg"),
+                Tables\Columns\TextColumn::make('sampling')
+                ->label('Waktu Sampling')
+                ->formatStateUsing(fn (string $state): string => "{$state} Weeks"),
                 Tables\Columns\TextColumn::make('created_at')->label('Di Buat'),
             ])
             ->filters([

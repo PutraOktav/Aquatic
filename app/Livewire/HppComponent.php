@@ -8,7 +8,6 @@ use App\Models\Transaksi;
 
 class HppComponent extends Component
 {
-    public $hpp;
     public $jenis_produk;
     public $biaya_produksi;
     public $jumlah_produk;
@@ -17,64 +16,34 @@ class HppComponent extends Component
 
     public function mount()
     {
-        // Load initial data
-        $this->hpp = Hpp::all();
+        // Load initial data if needed
     }
 
-    public function simpanHpp()
+    public function hitungTotalHpp()
     {
-        // Validation rules
+        // Validate user input
         $this->validate([
-            'jenis_produk' => 'required',
-            'biaya_produksi' => 'required|numeric',
-            'jumlah_produk' => 'required|numeric',
+            'jenis_produk' => 'required|string',
+            'biaya_produksi' => 'required|numeric|min:0',
+            'jumlah_produk' => 'required|integer|min:1',
+            'persentase_keuntungan' => 'required|numeric|min:0|max:100',
         ]);
 
-        // Save new HPP
-        Hpp::create([
-            'jenis_produk' => $this->jenis_produk,
-            'biaya_produksi' => $this->biaya_produksi,
-            'jumlah_produk' => $this->jumlah_produk,
-        ]);
-
-        // Refresh data after saving
-        $this->hpp = Hpp::all();
-
-        // Show success message
-        session()->flash('message', 'HPP saved successfully.');
+        // Calculate total HPP
+        $totalCost = $this->biaya_produksi * $this->jumlah_produk;
+        $profitAmount = $totalCost * ($this->persentase_keuntungan / 100);
+        $this->total_hpp = $totalCost + $profitAmount; // Final HPP calculation
     }
 
-    public function deleteHpp($id)
+    public function resetCalculation()
     {
-        // Find and delete HPP
-        $hpp = Hpp::find($id);
-        if ($hpp) {
-            $hpp->delete();
-        }
-
-        // Refresh data after deleting
-        $this->hpp = Hpp::all();
+        // Reset all input fields and result
+        $this->reset(['jenis_produk', 'biaya_produksi', 'jumlah_produk', 'persentase_keuntungan', 'total_hpp']);
     }
-
-
 
     public function render()
     {
         return view('livewire.hpp-component');
     }
-
-    public function hitungTotalHpp()
-    {
-        // Validasi inputan
-        $this->validate([
-            'jenis_produk' => 'required',
-            'biaya_produksi' => 'required|numeric',
-            'jumlah_produk' => 'required|integer',
-            'persentase_keuntungan' => 'required|numeric|min:0|max:100',
-        ]);
-
-        // Hitung total HPP dengan persentase keuntungan
-        $totalHpp = $this->biaya_produksi + ($this->biaya_produksi * ($this->persentase_keuntungan / 100));
-        $this->total_hpp = $totalHpp;
-    }
+    
 }
