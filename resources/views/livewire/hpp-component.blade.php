@@ -4,7 +4,6 @@
             <div class="p-6 bg-white border-b border-gray-200">
                 @if (!isset($total_hpp))
                     <div class="space-y-6">
-                        <h2 class="text-2xl font-bold text-gray-900">Input Product Details</h2>
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div>
                                 <label for="jenis_produk" class="block text-sm font-medium text-gray-700">Product Type</label>

@@ -5,7 +5,6 @@
                 <div class="space-y-6">
                     <!-- Form Section -->
                     <div class="bg-white shadow-md rounded-lg p-6">
-                        <h2 class="text-xl font-semibold mb-4">Add New Food Stock</h2>
                         <form wire:submit.prevent="store">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                 <div class="flex items-center">
