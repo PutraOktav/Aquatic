@@ -17,7 +17,7 @@
                                 </div>
 
                                 <div class="flex items-center">
-                                    <label for="stock" class="mr-2 text-lg">Stock (KG):</label>
+                                    <label for="stock" class="mr-2 text-lg">Stock:</label>
                                     <input type="number" id="stock" wire:model="stock" placeholder="Enter Stock"
                                     class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
                                     @error('stock')

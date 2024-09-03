@@ -143,6 +143,11 @@ new class extends Component {
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('fish-farm-sampling-calculator')" :active="request()->routeIs('Fish Farm Sampling Calculator ')" wire:navigate>
+                {{ __('Samp') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('hpp')" :active="request()->routeIs('HPP')" wire:navigate>
                 {{ __('HPP') }}
             </x-responsive-nav-link>
@@ -196,4 +201,5 @@ new class extends Component {
             </div>
         </div>
     </div>
+   
 </nav>
